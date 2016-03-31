@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Cat : MonoBehaviour {
     /* 
@@ -21,45 +22,50 @@ public class Cat : MonoBehaviour {
             else...
                 add force on rigidbody, along [directionToMouse.normalized * 1000f] (chase it!)
 */
-    public Transform Mouse;
     public Transform Explode;
     public AudioSource Laugh;
 
 	// Update is called once per frame
+
+    void OnDestroy()
+    {
+        Debug.Log("DESTROYED MOUSE");
+        
+    }
+
 	void FixedUpdate () {
-	    if (Mouse == null)
+
+        foreach (Transform newMouse in GameManager.mouseList)
         {
-            return;
-        }
 
-        Vector3 targetDir = transform.position - Mouse.position;
-        Vector3 directionToMouse = targetDir;
-        float angle = Vector3.Angle(directionToMouse, transform.position);
+            Vector3 targetDir = newMouse.position - transform.position;
+            Vector3 directionToMouse = targetDir;
+            float angle = Vector3.Angle(transform.forward, directionToMouse);
 
-        if( angle < 90f)
-        {
-            Ray catRay = new Ray(transform.position, directionToMouse);
-            RaycastHit catRayHitInfo = new RaycastHit();
 
-            if( Physics.Raycast(catRay, out catRayHitInfo, 100f))
+            if (angle < 90f)
             {
-                if (catRayHitInfo.collider.tag == "Mouse")
+                Ray catRay = new Ray(transform.position, directionToMouse);
+                RaycastHit catRayHitInfo = new RaycastHit();
+                Debug.DrawRay(transform.position, directionToMouse, Color.red);
+                if (Physics.Raycast(catRay, out catRayHitInfo, 100f))
                 {
-                    if (catRayHitInfo.distance <= 5f)
+                    if (catRayHitInfo.collider.tag == "Mouse")
                     {
-                        Laugh.Play();
-                        GetComponent<Rigidbody>().AddForce(directionToMouse.normalized * 1000f);
-                    }
-     
-                    if (catRayHitInfo.distance <=1f)
-                    {
-                        Destroy(catRayHitInfo.collider.gameObject);
-                        Instantiate(Explode, Mouse.transform.position + transform.forward * 3f, Quaternion.identity);
+                        if (catRayHitInfo.distance <= 30f)
+                        {
+                            //Laugh.Play();
+                            GetComponent<Rigidbody>().AddForce(directionToMouse.normalized * 100f * Time.deltaTime);
+                        }
+
+                        if (catRayHitInfo.distance <= 10f)
+                        {
+                            OnDestroy();
+                            Instantiate(Explode, newMouse.position + transform.forward * 2f, Quaternion.identity);
+                        }
                     }
                 }
             }
-    
         }
-
     }
 }

@@ -41,6 +41,31 @@ ModelImporter:
     100066: transform5
     100068: transform6
     100070: transform7
+    100072: environmentFog1
+    100074: group1
+    100076: pSphere2
+    100078: transform10
+    100080: transform11
+    100082: transform12
+    100084: transform13
+    100086: transform14
+    100088: transform15
+    100090: transform16
+    100092: transform17
+    100094: transform18
+    100096: transform19
+    100098: transform20
+    100100: transform21
+    100102: transform22
+    100104: transform23
+    100106: transform24
+    100108: transform25
+    100110: transform26
+    100112: transform27
+    100114: transform28
+    100116: transform8
+    100118: transform9
+    100120: turnTableCamera1
     400000: //RootNode
     400002: pCylinder1
     400004: pCylinder2
@@ -77,6 +102,31 @@ ModelImporter:
     400066: transform5
     400068: transform6
     400070: transform7
+    400072: environmentFog1
+    400074: group1
+    400076: pSphere2
+    400078: transform10
+    400080: transform11
+    400082: transform12
+    400084: transform13
+    400086: transform14
+    400088: transform15
+    400090: transform16
+    400092: transform17
+    400094: transform18
+    400096: transform19
+    400098: transform20
+    400100: transform21
+    400102: transform22
+    400104: transform23
+    400106: transform24
+    400108: transform25
+    400110: transform26
+    400112: transform27
+    400114: transform28
+    400116: transform8
+    400118: transform9
+    400120: turnTableCamera1
     2300000: pCylinder1
     2300002: pCylinder2
     2300004: pSphere1
@@ -99,6 +149,7 @@ ModelImporter:
     2300038: pCylinder23
     2300040: polySurface3
     2300042: pPyramid1
+    2300044: pSphere2
     3300000: pCylinder1
     3300002: pCylinder2
     3300004: pSphere1
@@ -121,6 +172,7 @@ ModelImporter:
     3300038: pCylinder23
     3300040: polySurface3
     3300042: pPyramid1
+    3300044: pSphere2
     4300000: pSphere1
     4300002: pCylinder1
     4300004: pCylinder2
@@ -143,6 +195,8 @@ ModelImporter:
     4300038: polySurface3
     4300040: pCylinder22
     4300042: pCylinder23
+    4300044: pSphere2
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -21,25 +21,34 @@ public class Mouse : MonoBehaviour {
            add force on rigidbody, along[-directionToCat.normalized * 1000f](run away!)
 
         */
-    public Transform Cat;
+
+ 
     public AudioSource ohNo;
-    // Update is called once per frame
+
+
     void FixedUpdate () {
-        Vector3 targetDir = transform.position - Cat.position;
-        Vector3 directionToCat = targetDir;
-        float angle = Vector3.Angle(targetDir, transform.position);
 
-        if( angle < 180)
+        foreach (Transform newCat in GameManager.catList)
+
         {
-            Ray mouseRay = new Ray (transform.position, directionToCat);
-            RaycastHit mouseRayHitInfo = new RaycastHit();
+            Vector3 targetDir = newCat.position - transform.position;
+            Vector3 directionToCat = targetDir;
+            float angle = Vector3.Angle(transform.forward, targetDir);
 
-            if(Physics.Raycast(mouseRay, out mouseRayHitInfo, 100f))
+            if (angle < 180f)
             {
-                if (mouseRayHitInfo.collider.tag == "Cat")
+                Ray mouseRay = new Ray(transform.position, directionToCat);
+                RaycastHit mouseRayHitInfo = new RaycastHit();
+
+                Debug.DrawRay(transform.position, directionToCat);
+
+                if (Physics.Raycast(mouseRay, out mouseRayHitInfo, 100f))
                 {
-                    ohNo.Play();
-                    GetComponent<Rigidbody>().AddForce(-directionToCat.normalized * 1000f);
+                    if (mouseRayHitInfo.collider.tag == "Cat" && mouseRayHitInfo.distance < 12f)
+                    {
+                        //ohNo.Play();
+                        GetComponent<Rigidbody>().AddForce(-directionToCat.normalized * 100f * Time.deltaTime);
+                    }
                 }
             }
         }
