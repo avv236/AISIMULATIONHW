@@ -25,6 +25,10 @@ public class Mouse : MonoBehaviour {
  
     public AudioSource ohNo;
 
+    void OnDestroy()
+    {
+        GameManager.mouseList.Remove(gameObject.transform);
+    }
 
     void FixedUpdate () {
 

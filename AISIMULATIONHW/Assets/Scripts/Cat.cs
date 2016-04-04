@@ -27,11 +27,6 @@ public class Cat : MonoBehaviour {
 
 	// Update is called once per frame
 
-    void OnDestroy()
-    {
-        Debug.Log("DESTROYED MOUSE");
-        
-    }
 
 	void FixedUpdate () {
 
@@ -60,7 +55,8 @@ public class Cat : MonoBehaviour {
 
                         if (catRayHitInfo.distance <= 10f)
                         {
-                            OnDestroy();
+                            Destroy(catRayHitInfo.collider.gameObject);
+                            Debug.Log("DESTROYED MOUSE");            
                             Instantiate(Explode, newMouse.position + transform.forward * 2f, Quaternion.identity);
                         }
                     }
