@@ -50,7 +50,7 @@ public class Mouse : MonoBehaviour {
                 {
                     if (mouseRayHitInfo.collider.tag == "Cat" && mouseRayHitInfo.distance < 12f)
                     {
-                        //ohNo.Play();
+                        ohNo.Play();
                         GetComponent<Rigidbody>().AddForce(-directionToCat.normalized * 100f * Time.deltaTime);
                     }
                 }

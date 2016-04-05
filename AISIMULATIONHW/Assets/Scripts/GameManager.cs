@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-	   
+        catList.Clear();
+        mouseList.Clear();
 	}
 	
 	// Update is called once per frame

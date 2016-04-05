@@ -47,15 +47,15 @@ public class Cat : MonoBehaviour {
                 {
                     if (catRayHitInfo.collider.tag == "Mouse")
                     {
-                        if (catRayHitInfo.distance <= 30f)
+                        if (catRayHitInfo.distance <= 20f)
                         {
-                            //Laugh.Play();
-                            GetComponent<Rigidbody>().AddForce(directionToMouse.normalized * 100f * Time.deltaTime);
+                            GetComponent<Rigidbody>().AddForce(directionToMouse.normalized * Time.deltaTime);
                         }
 
                         if (catRayHitInfo.distance <= 10f)
                         {
                             Destroy(catRayHitInfo.collider.gameObject);
+                            Laugh.Play();
                             Debug.Log("DESTROYED MOUSE");            
                             Instantiate(Explode, newMouse.position + transform.forward * 2f, Quaternion.identity);
                         }

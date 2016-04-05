@@ -49,10 +49,10 @@ public class WallMaker : MonoBehaviour
             Instantiate(wallPrefab, transform.position, Quaternion.Euler(wallRotation));
             transform.position += transform.forward * 5f;
 
-            if (transform.position.x > 35f || transform.position.x < -35f
-                || transform.position.z > 35f || transform.position.z < -35f)
+            if (transform.position.x > 30f || transform.position.x < -30f
+                || transform.position.z > 30f || transform.position.z < -30f)
             {
-                transform.position = new Vector3(Random.Range(-7f, 7f) * 5f , 0f, Random.Range(-7f, 7f) * 5f);
+                transform.position = new Vector3(Random.Range(-6f, 6f) * 5f , 0f, Random.Range(-6f, 6f) * 5f);
         
             }
 
